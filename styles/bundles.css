@@ -1,0 +1,175 @@
+/* ============================================
+   BUNDLES.CSS - Bundles Carousel Component
+   Mobile-First
+   ============================================ */
+
+.bundles {
+    padding: var(--spacing-xl) var(--spacing-md);
+    position: relative;
+}
+
+.bundles__title {
+    font-size: var(--font-size-xl);
+    font-weight: 800;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Carousel Navigation Controls */
+.bundles__controls {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-sm);
+    z-index: 10;
+}
+
+.bundles__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.bundles__nav-btn:hover:not(:disabled) {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.bundles__nav-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.bundles__nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.bundles__nav-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Horizontal Scrolling Carousel */
+.bundles__carousel {
+    display: flex;
+    gap: var(--spacing-lg);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none;
+}
+
+.bundles__carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Bundle Card Component */
+.bundle-card {
+    flex: 0 0 280px;
+    background-color: var(--color-dark-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+}
+
+.bundle-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+}
+
+.bundle-card__image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background-color: #0a0a0a;
+}
+
+.bundle-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+}
+
+.bundle-card:hover .bundle-card__image {
+    transform: scale(1.05);
+}
+
+.bundle-card__content {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.bundle-card__name {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--color-text);
+}
+
+.bundle-card__description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+}
+
+.bundle-card__items {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    font-style: italic;
+}
+
+.bundle-card__price {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-lg);
+    margin-top: auto;
+}
+
+.bundle-card__btn {
+    align-self: flex-start;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.bundle-card__btn:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.bundle-card__btn:active {
+    transform: scale(0.95);
+}

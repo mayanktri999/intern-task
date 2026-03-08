@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRONZONE - Premium Boxing & Fitness Gear</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/hero.css">
+    <link rel="stylesheet" href="styles/categories.css">
+    <link rel="stylesheet" href="styles/products.css">
+    <link rel="stylesheet" href="styles/bundles.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <!-- Header Component -->
+    <header class="header">
+        <div class="header__container">
+            <button class="header__menu-btn" id="menuBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <h1 class="header__logo">IRONZONE</h1>
+            
+            <!-- Desktop Navigation Menu -->
+            <nav class="desktop-menu">
+                <a class="desktop-menu__item" href="index.html">HOME</a>
+                <a class="desktop-menu__item" href="category.html">CATEGORIES</a>
+                <a class="desktop-menu__item" href="profile.html">PROFILE</a>
+            </nav>
+
+            <button class="header__cart-btn" id="cartBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu__overlay" id="menuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu__items">
+            <a class="mobile-menu__item" href="index.html" id="homeLink">
+                <div class="mobile-menu__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+                    </svg>
+                </div>
+                <span>HOME</span>
+            </a>
+            <a class="mobile-menu__item" href="category.html" id="categoryLink">
+                <div class="mobile-menu__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 3h8v8H3V3m10 0h8v8h-8V3M3 13h8v8H3v-8m10 0h8v8h-8v-8z"></path>
+                    </svg>
+                </div>
+                <span>CATEGORIES</span>
+            </a>
+            <a class="mobile-menu__item" href="profile.html" id="profileLink">
+                <div class="mobile-menu__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                    </svg>
+                </div>
+                <span>PROFILE</span>
+            </a>
+            <a class="mobile-menu__item" href="cart.html" id="cartLink">
+                <div class="mobile-menu__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </div>
+                <span>CART</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Hero Section Component -->
+    <section class="hero">
+        <div class="hero__content">
+            <h2 class="hero__title">NEW DROP</h2>
+            <p class="hero__subtitle">Boxing Collection 2026</p>
+            <button class="hero__cta">SHOP NOW</button>
+        </div>
+        <div class="hero__image">
+            <img src="https://img.freepik.com/premium-photo/boxing-gloves-black-background_780672-867.jpg" alt="Red Boxing Gloves">
+        </div>
+    </section>
+
+    <!-- Categories Component -->
+    <section class="categories">
+        <h2 class="categories__title">TRAIN BY DISCIPLINE</h2>
+        <div class="categories__grid">
+            <article class="category-card">
+                <div class="category-card__icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
+                    </svg>
+                </div>
+                <h3 class="category-card__name">Boxing</h3>
+            </article>
+            <article class="category-card">
+                <div class="category-card__icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
+                    </svg>
+                </div>
+                <h3 class="category-card__name">Gym</h3>
+            </article>
+            <article class="category-card">
+                <div class="category-card__icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
+                    </svg>
+                </div>
+                <h3 class="category-card__name">Cardio</h3>
+            </article>
+        </div>
+    </section>
+
+    <!-- Products Section Component -->
+    <section class="products">
+        <h2 class="products__title">BEST SELLERS</h2>
+        <div class="products__grid">
+            <!-- Product Card 1 -->
+            <article class="product-card">
+                <div class="product-card__image-wrapper">
+                    <img class="product-card__image" src="images/pro-style-gloves.jpg" alt="Pro Style Training Gloves">
+                    <span class="product-card__discount">-20%</span>
+                    <button class="product-card__favorite" aria-label="Add to favorites">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-card__content">
+                    <p class="product-card__brand">EVERLAST</p>
+                    <h3 class="product-card__name">Pro Style Training Gloves</h3>
+                    <p class="product-card__code">16oz</p>
+                    <div class="product-card__rating">
+                        <span class="product-card__stars">★★★★☆</span>
+                        <span class="product-card__reviews">4.6 (112)</span>
+                    </div>
+                    <p class="product-card__price">₹3,299</p>
+                </div>
+            </article>
+
+            <!-- Product Card 2 -->
+            <article class="product-card">
+                <div class="product-card__image-wrapper">
+                    <img class="product-card__image" src="images/heavy-bag.jpg" alt="Professional Heavy Bag">
+                    <span class="product-card__discount">-28%</span>
+                    <button class="product-card__favorite" aria-label="Add to favorites">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-card__content">
+                    <p class="product-card__brand">TITLE</p>
+                    <h3 class="product-card__name">Professional Heavy Bag</h3>
+                    <p class="product-card__code">45kg</p>
+                    <div class="product-card__rating">
+                        <span class="product-card__stars">★★★★☆</span>
+                        <span class="product-card__reviews">4.8 (112)</span>
+                    </div>
+                    <p class="product-card__price">₹3,299</p>
+                </div>
+            </article>
+
+            <!-- Product Card 3 -->
+            <article class="product-card">
+                <div class="product-card__image-wrapper">
+                    <img class="product-card__image" src="images/hand-wraps.jpg" alt="Premium Hand Wraps">
+                    <button class="product-card__favorite" aria-label="Add to favorites">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-card__content">
+                    <p class="product-card__brand">VENUM</p>
+                    <h3 class="product-card__name">Premium Hand Wraps</h3>
+                    <p class="product-card__code">4.5m</p>
+                    <div class="product-card__rating">
+                        <span class="product-card__stars">★★★★☆</span>
+                        <span class="product-card__reviews">4.5 (234)</span>
+                    </div>
+                    <p class="product-card__price">₹799</p>
+                </div>
+            </article>
+
+            <!-- Product Card 4 -->
+            <article class="product-card">
+                <div class="product-card__image-wrapper">
+                    <img class="product-card__image" src="images/training-gloves.jpg" alt="Pro Style Training Gloves">
+                    <button class="product-card__favorite" aria-label="Add to favorites">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-card__content">
+                    <p class="product-card__brand">VENUM</p>
+                    <h3 class="product-card__name">Pro Style Training Gloves</h3>
+                    <p class="product-card__code">12oz</p>
+                    <div class="product-card__rating">
+                        <span class="product-card__stars">★★★★☆</span>
+                        <span class="product-card__reviews">4.6 (112)</span>
+                    </div>
+                    <p class="product-card__price">₹3,299</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Bundles Section Component -->
+    <section class="bundles">
+        <h2 class="bundles__title">BUNDLES & KITS</h2>
+        
+        <!-- Carousel Navigation -->
+        <div class="bundles__controls">
+            <button class="bundles__nav-btn bundles__nav-btn--prev" id="bundlesPrevBtn" aria-label="Previous bundle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="bundles__nav-btn bundles__nav-btn--next" id="bundlesNextBtn" aria-label="Next bundle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Horizontal Scrolling Carousel -->
+        <div class="bundles__carousel" id="bundlesCarousel">
+            <!-- Bundle Card 1 -->
+            <article class="bundle-card">
+                <div class="bundle-card__image-wrapper">
+                    <img class="bundle-card__image" src="images/dumbbells-bundle.jpg" alt="Home Gym Bundle">
+                </div>
+                <div class="bundle-card__content">
+                    <h3 class="bundle-card__name">Home Gym Bundle</h3>
+                    <p class="bundle-card__description">Dumbbells + Bench + Bands</p>
+                    <p class="bundle-card__items">3 Items</p>
+                    <p class="bundle-card__price">₹32,999</p>
+                    <button class="bundle-card__btn">VIEW</button>
+                </div>
+            </article>
+
+            <!-- Bundle Card 2 -->
+            <article class="bundle-card">
+                <div class="bundle-card__image-wrapper">
+                    <img class="bundle-card__image" src="images/boxing-bundle.jpg" alt="Boxing Starter Bundle">
+                </div>
+                <div class="bundle-card__content">
+                    <h3 class="bundle-card__name">Boxing Starter</h3>
+                    <p class="bundle-card__description">Gloves + Hand Wraps + Bag</p>
+                    <p class="bundle-card__items">3 Items</p>
+                    <p class="bundle-card__price">₹4,999</p>
+                    <button class="bundle-card__btn">VIEW</button>
+                </div>
+            </article>
+
+            <!-- Bundle Card 3 -->
+            <article class="bundle-card">
+                <div class="bundle-card__image-wrapper">
+                    <img class="bundle-card__image" src="images/cardio-bundle.jpg" alt="Cardio Bundle">
+                </div>
+                <div class="bundle-card__content">
+                    <h3 class="bundle-card__name">Cardio Bundle</h3>
+                    <p class="bundle-card__description">Jump Rope + Resistance Bands</p>
+                    <p class="bundle-card__items">2 Items</p>
+                    <p class="bundle-card__price">₹1,999</p>
+                    <button class="bundle-card__btn">VIEW</button>
+                </div>
+            </article>
+
+            <!-- Bundle Card 4 -->
+            <article class="bundle-card">
+                <div class="bundle-card__image-wrapper">
+                    <img class="bundle-card__image" src="images/training-bundle.jpg" alt="Pro Training Bundle">
+                </div>
+                <div class="bundle-card__content">
+                    <h3 class="bundle-card__name">Pro Training Kit</h3>
+                    <p class="bundle-card__description">All-In-One Training Set</p>
+                    <p class="bundle-card__items">5 Items</p>
+                    <p class="bundle-card__price">₹8,999</p>
+                    <button class="bundle-card__btn">VIEW</button>
+                </div>
+            </article>
+
+            <!-- Bundle Card 5 -->
+            <article class="bundle-card">
+                <div class="bundle-card__image-wrapper">
+                    <img class="bundle-card__image" src="images/recovery-bundle.jpg" alt="Recovery Bundle">
+                </div>
+                <div class="bundle-card__content">
+                    <h3 class="bundle-card__name">Recovery Bundle</h3>
+                    <p class="bundle-card__description">Foam Roller + Massage Ball</p>
+                    <p class="bundle-card__items">2 Items</p>
+                    <p class="bundle-card__price">₹2,999</p>
+                    <button class="bundle-card__btn">VIEW</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

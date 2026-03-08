@@ -1,0 +1,215 @@
+/* ============================================
+   RESPONSIVE.CSS - Responsive Design Rules
+   Mobile-First (base mobile in main.css)
+   ============================================ */
+
+/* Tablets (640px and up) */
+@media (min-width: 640px) {
+    .products__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        margin: var(--spacing-xl) var(--spacing-lg);
+    }
+
+    .hero__image {
+        height: 350px;
+    }
+
+    /* Bundles responsive */
+    .bundle-card {
+        flex: 0 0 320px;
+    }
+
+    .bundles__carousel {
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Medium Devices (768px and up) */
+@media (min-width: 768px) {
+    :root {
+        --font-size-base: 15px;
+        --font-size-xl: 28px;
+        --font-size-2xl: 32px;
+    }
+
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+
+    .header__container {
+        padding: 0 var(--spacing-lg);
+    }
+
+    .hero {
+        flex-direction: row;
+        margin: var(--spacing-xl) var(--spacing-lg);
+    }
+
+    .hero__content {
+        flex: 1;
+        padding: var(--spacing-2xl);
+    }
+
+    .hero__image {
+        flex: 1;
+        height: 400px;
+    }
+
+    .categories__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .products__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    /* Bundles responsive */
+    .bundle-card {
+        flex: 0 0 340px;
+    }
+
+    .bundles__carousel {
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Large Devices (1024px and up) */
+@media (min-width: 1024px) {
+    .header__menu-btn {
+        display: none;
+    }
+
+    .products__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Bundles responsive */
+    .bundle-card {
+        flex: 0 0 300px;
+    }
+
+    section {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .products {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .categories {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .bundles {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+}
+
+/* Extra Large Devices (1200px and up) */
+@media (min-width: 1200px) {
+    :root {
+        --spacing-md: 20px;
+        --spacing-lg: 32px;
+        --spacing-xl: 48px;
+    }
+
+    .products__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Bundles responsive */
+    .bundle-card {
+        flex: 0 0 280px;
+    }
+
+    .bundles__carousel {
+        gap: var(--spacing-lg);
+        margin: 0 auto;
+    }
+
+    .hero {
+        margin: var(--spacing-2xl) auto;
+        max-width: 1200px;
+    }
+
+    section {
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+
+    .products {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .categories {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .bundles {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--color-dark);
+        color: var(--color-text);
+    }
+}
+
+/* Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    .product-card__favorite,
+    .category-card,
+    .header__menu-btn,
+    .header__cart-btn,
+    .bundles__nav-btn {
+        padding: var(--spacing-md);
+    }
+
+    .product-card__favorite:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .category-card:hover {
+        background-color: var(--color-dark-secondary);
+    }
+
+    .bundle-card {
+        flex: 0 0 300px;
+    }
+}

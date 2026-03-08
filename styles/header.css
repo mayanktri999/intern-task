@@ -1,0 +1,204 @@
+/* ============================================
+   HEADER.CSS - Header Component
+   Mobile-First
+   ============================================ */
+
+.header {
+    background-color: var(--color-dark);
+    border-bottom: 2px solid var(--color-border);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.header__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+}
+
+.header__menu-btn:hover {
+    color: #ff5555;
+}
+
+.header__logo {
+    font-size: var(--font-size-xl);
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--color-primary);
+    flex: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.header__cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--color-text);
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.header__cart-btn:hover {
+    color: var(--color-primary);
+}
+
+/* Cart Badge */
+.header__cart-btn::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+}
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 80%;
+    height: 100vh;
+    background-color: var(--color-dark);
+    border-right: 2px solid var(--color-border);
+    z-index: 200;
+    transition: left var(--transition-base);
+    padding-top: 80px;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+.mobile-menu__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 150;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.mobile-menu__overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu__items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+}
+
+.mobile-menu__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--font-size-md);
+}
+
+.mobile-menu__item:hover {
+    background-color: var(--color-dark-secondary);
+    color: var(--color-primary);
+    padding-left: calc(var(--spacing-lg) + var(--spacing-sm));
+}
+
+.mobile-menu__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 51, 51, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+}
+
+.mobile-menu__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Desktop Menu - Hidden on Mobile */
+.desktop-menu {
+    display: none;
+    gap: var(--spacing-xl);
+}
+
+.desktop-menu__item {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--font-size-md);
+    transition: color var(--transition-fast);
+    cursor: pointer;
+}
+
+.desktop-menu__item:hover {
+    color: var(--color-primary);
+}
+
+/* Desktop View (1024px+) */
+@media (min-width: 1024px) {
+    .header__container {
+        justify-content: space-between;
+    }
+
+    .header__menu-btn {
+        display: none;
+    }
+
+    .header__logo {
+        flex: 0;
+        margin-right: var(--spacing-xl);
+    }
+
+    .desktop-menu {
+        display: flex;
+        flex: 1;
+    }
+
+    .mobile-menu {
+        display: none !important;
+    }
+
+    .mobile-menu__overlay {
+        display: none !important;
+    }
+
+    .header__cart-btn {
+        margin-left: var(--spacing-xl);
+    }
+}

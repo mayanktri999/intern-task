@@ -1,0 +1,265 @@
+/* ============================================
+   CONFIRMATION.CSS - Order Confirmation Page Styles
+   ============================================ */
+
+:root {
+    --color-primary: #ff3333;
+    --color-dark: #1a1a1a;
+    --color-text: #ffffff;
+    --color-text-muted: #999999;
+    --color-border: #333333;
+    --color-success: #4caf50;
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition-base: 0.3s ease;
+}
+
+/* ============ PAGE LAYOUT ============ */
+.confirmation-page {
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-dark);
+}
+
+/* ============ HEADER ============ */
+.confirmation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.confirmation-header__back {
+    background: none;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.confirmation-header__back:active {
+    opacity: 0.7;
+}
+
+.confirmation-header__title {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    flex: 1;
+    letter-spacing: 1px;
+}
+
+.confirmation-header__spacer {
+    width: 40px;
+}
+
+/* ============ SUCCESS ANIMATION ============ */
+.confirmation-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.success-icon {
+    width: 120px;
+    height: 120px;
+    border: 3px solid var(--color-success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-success);
+    animation: successPulse 0.6s ease-out;
+}
+
+.success-icon svg {
+    width: 60px;
+    height: 60px;
+    animation: checkmark 0.6s ease-out;
+}
+
+@keyframes successPulse {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+        stroke-dasharray: 50;
+        stroke-dashoffset: 50;
+    }
+    100% {
+        transform: scale(1);
+        stroke-dasharray: 50;
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ============ CONTENT ============ */
+.confirmation-content {
+    flex: 1;
+    padding: 0 var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+}
+
+.confirmation-content__title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 1px;
+}
+
+.confirmation-content__message {
+    font-size: 16px;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* ============ ORDER DETAILS ============ */
+.order-details {
+    background-color: var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    text-align: left;
+}
+
+.order-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.order-detail-row:last-child {
+    border-bottom: none;
+}
+
+.order-detail-row .label {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.order-detail-row .value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* ============ ACTION BUTTONS ============ */
+.confirmation-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.btn-continue-shopping,
+.btn-track-order {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    width: 100%;
+}
+
+.btn-continue-shopping {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-continue-shopping:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+}
+
+.btn-track-order {
+    background-color: var(--color-border);
+    color: var(--color-text);
+    border: 1px solid var(--color-primary);
+}
+
+.btn-track-order:active {
+    background-color: rgba(255, 51, 51, 0.1);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (min-width: 640px) {
+    .confirmation-page {
+        max-width: 600px;
+    }
+
+    .confirmation-actions {
+        flex-direction: row;
+        gap: var(--spacing-md);
+    }
+
+    .btn-continue-shopping,
+    .btn-track-order {
+        flex: 1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .confirmation-page {
+        max-width: 100%;
+        padding: var(--spacing-xl);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .confirmation-header {
+        display: none;
+    }
+
+    .confirmation-content {
+        max-width: 500px;
+    }
+
+    .success-icon {
+        width: 160px;
+        height: 160px;
+    }
+
+    .success-icon svg {
+        width: 80px;
+        height: 80px;
+    }
+
+    .confirmation-content__title {
+        font-size: 36px;
+    }
+
+    .confirmation-content__message {
+        font-size: 18px;
+    }
+}
