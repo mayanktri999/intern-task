@@ -19,7 +19,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.6,
                 reviews: 102,
-                image: 'gloves-red',
+                image: 'pro-style-gloves.jpg',
                 description: 'Professional-grade training gloves with superior padding'
             },
             {
@@ -33,7 +33,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.3,
                 reviews: 1892,
-                image: 'heavy-bag',
+                image: 'heavy-bag.jpg',
                 description: 'Durable heavy bag for intense training sessions'
             },
             {
@@ -47,7 +47,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.6,
                 reviews: 192,
-                image: 'hand-wraps',
+                image: 'hand-wraps.jpg',
                 description: 'Elastic hand wraps for wrist protection and support'
             },
             {
@@ -61,7 +61,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.8,
                 reviews: 1592,
-                image: 'gloves-elite',
+                image: 'https://tse2.mm.bing.net/th/id/OIP.rZjUmx4Q-nqSHZZmgZhaswHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
                 description: 'Elite series boxing gloves for advanced training'
             },
             {
@@ -75,7 +75,7 @@ const PRODUCTS_DATA = {
                 discount: 18,
                 rating: 4.5,
                 reviews: 156,
-                image: 'speed-bag',
+                image: `https://tse2.mm.bing.net/th/id/OIP.4NRNNcwTmxBp9Z0Z0jAWrgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3`,
                 description: 'Professional speed bag platform set'
             },
             {
@@ -89,7 +89,7 @@ const PRODUCTS_DATA = {
                 discount: 25,
                 rating: 4.4,
                 reviews: 512,
-                image: 'hand-tape',
+                image: 'https://www.gosupps.com/media/catalog/product/cache/25/image/1500x/040ec09b1e35df139433887a97daa66f/8/1/81aicwaKPdS._SL1500_.jpg',
                 description: 'Professional hand tape for extra wrist support'
             },
             {
@@ -103,7 +103,7 @@ const PRODUCTS_DATA = {
                 discount: 18,
                 rating: 4.7,
                 reviews: 234,
-                image: 'bag-stand',
+                image: 'https://th.bing.com/th/id/OIP.VZo-VPmskv2JHXs8UqdEcgHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
                 description: 'Freestanding heavy bag stand'
             },
             {
@@ -117,7 +117,7 @@ const PRODUCTS_DATA = {
                 discount: 23,
                 rating: 4.3,
                 reviews: 89,
-                image: 'double-bag',
+                image: 'https://i5.walmartimages.com/asr/cb51d3e5-38a9-4331-ab7e-74135fcd7699_1.a739ba2fe058ef785b91c931c84c64bb.jpeg?odnHeight=372&odnWidth=372&odnBg=FFFFFF',
                 description: 'Double end bag for precision training'
             }
         ]
@@ -138,7 +138,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.8,
                 reviews: 92,
-                image: 'dumbbells',
+                image: 'https://tse2.mm.bing.net/th/id/OIP.AE2GBMtB69neoMbDjyboEQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',
                 description: 'Professional adjustable dumbbell set with stand'
             },
             {
@@ -152,7 +152,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.3,
                 reviews: 1992,
-                image: 'bench',
+                image: 'https://m.media-amazon.com/images/I/61RzmFJ6a2L._SL1500_.jpgench.jpg',
                 description: 'Adjustable weight bench for full-body workouts'
             },
             {
@@ -166,7 +166,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.6,
                 reviews: 702,
-                image: 'kettlebell',
+                image: 'https://tse1.mm.bing.net/th/id/OIP.NReqyIvWi2_1WQdDX3mBvQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3.jpg',
                 description: 'Professional-grade cast iron kettlebell'
             },
             {
@@ -180,7 +180,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.8,
                 reviews: 1592,
-                image: 'barbell',
+                image: 'https://img.freepik.com/premium-photo/barbell-gym_776674-536090.jpg',
                 description: 'Olympic-standard weight barbell'
             },
             {
@@ -194,7 +194,7 @@ const PRODUCTS_DATA = {
                 discount: 19,
                 rating: 4.9,
                 reviews: 345,
-                image: 'squat-rack',
+                image: 'https://th.bing.com/th/id/OIP.z5sLiktUV0HVJASth3NIVwHaFj?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3.jpg',
                 description: 'Professional adjustable squat rack'
             },
             {
@@ -208,7 +208,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.7,
                 reviews: 523,
-                image: 'belt',
+                image: 'https://tse2.mm.bing.net/th/id/OIP.8rhbDAIetDB0sdJfBiVRaQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3.jpg',
                 description: 'Premium leather lifting belt for support'
             },
             {
@@ -222,7 +222,7 @@ const PRODUCTS_DATA = {
                 discount: 21,
                 rating: 4.5,
                 reviews: 412,
-                image: 'plates',
+                image: 'https://image.made-in-china.com/2f0j00JvNWkLMIZtYp/Wholesale-Strength-Fitness-Equipment-Competition-Standard-Bumper-Plate-Gym-Black-Rubber-Weight-Plate.jpg.jpg',
                 description: 'Standard weight plates for barbells'
             },
             {
@@ -236,7 +236,7 @@ const PRODUCTS_DATA = {
                 discount: 25,
                 rating: 4.4,
                 reviews: 189,
-                image: 'straps',
+                image: 'https://m.media-amazon.com/images/I/71DDRGXxcXS._AC_SL1500_.jpg.jpg',
                 description: 'Professional lifting straps for grip support'
             }
         ]
@@ -257,7 +257,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.6,
                 reviews: 1592,
-                image: 'pullup-bar',
+                image: 'https://m.media-amazon.com/images/I/61TCKpfqmWL._AC_.jpg',
                 description: 'Heavy-duty wall-mounted pull-up bar'
             },
             {
@@ -271,7 +271,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.8,
                 reviews: 1892,
-                image: 'rings',
+                image: 'https://tse2.mm.bing.net/th/id/OIP.rDNEOzmGQBH_geAkuGRVMQHaHZ?rs=1&pid=ImgDetMain&o=7&rm=3.jpg',
                 description: 'Professional wooden gymnastic rings'
             },
             {
@@ -285,7 +285,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.6,
                 reviews: 1192,
-                image: 'bands',
+                image: 'https://tse3.mm.bing.net/th/id/OIP.3-2JaAl-4eQl8rcQEaT7jQHaJ4?rs=1&pid=ImgDetMain&o=7&rm=3.jpg',
                 description: 'Premium resistance bands set with multiple resistance levels'
             },
             {
@@ -299,7 +299,7 @@ const PRODUCTS_DATA = {
                 discount: 20,
                 rating: 4.8,
                 reviews: 1892,
-                image: 'parallettes',
+                image: 'https://images.squarespace-cdn.com/content/v1/623070fe0fe8996f057b8716/67c73961-9a7a-4e1c-91fd-de8c7ad4ec37/mini+parallettes.jpg?format=1000w.jpg',
                 description: 'Professional steel parallettes for L-sits and push-ups'
             },
             {
@@ -313,7 +313,7 @@ const PRODUCTS_DATA = {
                 discount: 19,
                 rating: 4.7,
                 reviews: 412,
-                image: 'dip-bars',
+                image: 'https://cdn.shopify.com/s/files/1/2513/1876/files/front_lever.jpg?v=1692088972.jpg',
                 description: 'Portable dip bar station for muscle-ups and dips'
             },
             {
@@ -327,7 +327,7 @@ const PRODUCTS_DATA = {
                 discount: 31,
                 rating: 4.5,
                 reviews: 723,
-                image: 'ab-wheel',
+                image: 'https://tse2.mm.bing.net/th/id/OIP.Q-WqpzsOOa3b5A7XWCVE-gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3.jpg',
                 description: 'Dual-wheel ab roller for core strength'
             },
             {
@@ -341,7 +341,7 @@ const PRODUCTS_DATA = {
                 discount: 23,
                 rating: 4.6,
                 reviews: 589,
-                image: 'suspension',
+                image: 'https://tse1.mm.bing.net/th/id/OIP.Y25mhcTSBbj_AYonuOL5DgHaE7?rs=1&pid=ImgDetMain&o=7&rm=3.jpg',
                 description: 'Professional suspension trainer for full-body workouts'
             },
             {
@@ -355,7 +355,7 @@ const PRODUCTS_DATA = {
                 discount: 24,
                 rating: 4.4,
                 reviews: 234,
-                image: 'ab-straps',
+                image: 'https://th.bing.com/th/id/OIP.tDyVeuieOAXQJ0f3bll-BAHaHi?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3.jpg',
                 description: 'Comfortable hanging ab straps for leg raises'
             }
         ]

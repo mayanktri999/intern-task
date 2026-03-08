@@ -193,7 +193,7 @@
     position: absolute;
     top: var(--spacing-sm);
     left: var(--spacing-sm);
-    background-color: var(--color-primary);
+    background-color: #F4A261;
     color: white;
     padding: var(--spacing-xs) var(--spacing-md);
     border-radius: var(--radius-md);
@@ -279,7 +279,7 @@
 .product-card__current-price {
     font-size: var(--font-size-lg);
     font-weight: 700;
-    color: var(--color-primary);
+    color: #ffffff;
 }
 
 .product-card__original-price {
@@ -426,4 +426,10 @@
     .product-card__favorite {
         opacity: 1;
     }
+}
+.product-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }

@@ -1,19 +1,15 @@
-/* ============================================
-   CATEGORY.JS - Category Page Interactivity
-   ============================================ */
 
-// Toggle Category Expansion
 function toggleCategory(categoryElement) {
     const toggle = categoryElement.querySelector('.category-card__toggle');
     const subcategories = categoryElement.querySelector('.category-card__subcategories');
 
     if (!subcategories) return;
 
-    // Toggle active state
+   
     subcategories.classList.toggle('active');
     toggle.classList.toggle('active');
 
-    // Animation
+   
     if (subcategories.classList.contains('active')) {
         subcategories.style.maxHeight = subcategories.scrollHeight + 'px';
     } else {
@@ -21,7 +17,7 @@ function toggleCategory(categoryElement) {
     }
 }
 
-// Navigate to Products Page
+
 function navigateToProducts(categoryId) {
     // Map category IDs to product category names
     const categoryMap = {

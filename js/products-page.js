@@ -57,10 +57,17 @@ function initProductsPage() {
     const urlParams = new URLSearchParams(window.location.search);
     currentCategory = urlParams.get('category') || 'boxing';
 
-    // Update page title
+    // Update page title - only if elements exist
     const categoryInfo = PRODUCTS_DATA[currentCategory];
-    document.getElementById('pageTitle').textContent = categoryInfo.name;
-    document.getElementById('categoryName').textContent = categoryInfo.name;
+    const pageTitle = document.getElementById('pageTitle');
+    const categoryName = document.getElementById('categoryName');
+    
+    if (pageTitle && categoryInfo) {
+        pageTitle.textContent = categoryInfo.name;
+    }
+    if (categoryName && categoryInfo) {
+        categoryName.textContent = categoryInfo.name;
+    }
 
     // Initialize category tabs
     initCategoryTabs();
@@ -79,11 +86,22 @@ function initProductsPage() {
  */
 function initCategoryTabs() {
     const tabsContainer = document.getElementById('categoryTabs');
+    
+    // Guard check: if PRODUCTS_DATA doesn't exist or category not found, skip
+    if (!PRODUCTS_DATA || !PRODUCTS_DATA[currentCategory]) {
+        console.warn('Products data not available for category:', currentCategory);
+        return;
+    }
+    
     const products = PRODUCTS_DATA[currentCategory].products;
     const types = ['all', ...new Set(products.map(p => p.type))];
 
     // Clear existing tabs
-    tabsContainer.innerHTML = '';
+    if (tabsContainer) {
+        tabsContainer.innerHTML = '';
+    } else {
+        return;
+    }
 
     types.forEach(type => {
         const tab = document.createElement('button');
@@ -116,6 +134,12 @@ function initCategoryTabs() {
  */
 function loadProducts() {
     const grid = document.getElementById('productsGrid');
+    
+    // Guard check: if grid doesn't exist or products data unavailable, skip
+    if (!grid || !PRODUCTS_DATA || !PRODUCTS_DATA[currentCategory]) {
+        return;
+    }
+    
     let products = PRODUCTS_DATA[currentCategory].products;
 
     // Filter by type if needed
@@ -124,7 +148,10 @@ function loadProducts() {
     }
 
     // Update product count
-    document.getElementById('productCount').textContent = `${products.length} products`;
+    const productCountEl = document.getElementById('productCount');
+    if (productCountEl) {
+        productCountEl.textContent = `${products.length} products`;
+    }
 
     // Display only the first 'displayedProducts' items
     const visibleProducts = products.slice(0, displayedProducts);
@@ -157,11 +184,12 @@ function createProductCard(product) {
 
     const starRating = '★'.repeat(Math.floor(product.rating)) + '☆'.repeat(5 - Math.floor(product.rating));
 
+    // Check if image is a full URL or a filename
+    const imageSrc = product.image.startsWith('http') ? product.image : `images/${product.image}`;
+
     card.innerHTML = `
         <div class="product-card__image">
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); display: flex; align-items: center; justify-content: center; color: #666;">
-                [${product.type}]
-            </div>
+            <img src="${imageSrc}" alt="${product.name}" class="product-card__img">
             <div class="product-card__discount">-${product.discount}%</div>
             <button class="product-card__favorite" data-product-id="${product.id}">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -200,7 +228,7 @@ function createProductCard(product) {
 
     // Add click listener to card to open product detail
     card.addEventListener('click', () => {
-        openProductDetail(product.id);
+        openProductDetail(product.id, imageSrc);
     });
 
     return card;
@@ -229,6 +257,11 @@ function addToCart(product) {
     // Save cart to localStorage
     localStorage.setItem('ironzone_cart', JSON.stringify(cart));
     
+    // Update cart badge
+    if (window.updateCartBadge) {
+        window.updateCartBadge();
+    }
+    
     // Show toast notification instead of alert
     showToastNotification(`${product.name} added to cart!`, 'success');
 }
@@ -236,8 +269,9 @@ function addToCart(product) {
 /**
  * Open Product Detail Page
  */
-function openProductDetail(productId) {
-    window.location.href = `product-detail.html?id=${productId}`;
+function openProductDetail(productId, imageSrc) {
+    const encodedImage = encodeURIComponent(imageSrc);
+    window.location.href = `product-detail.html?id=${productId}&image=${encodedImage}`;
 }
 
 /**

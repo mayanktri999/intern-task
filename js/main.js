@@ -26,7 +26,6 @@ function initMobileMenu() {
         });
     }
 
-    // Close menu when a menu item is clicked
     menuItems.forEach(item => {
         item.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
@@ -45,8 +44,22 @@ function initHeader() {
         cartBtn.addEventListener('click', handleCartClick);
     }
 
-    // Initialize mobile menu
+    updateCartBadge();
+    
     initMobileMenu();
+}
+
+/**
+ * Update Cart Badge Count
+ */
+function updateCartBadge() {
+    const cartBadge = document.getElementById('cartCount');
+    if (cartBadge) {
+        const cart = JSON.parse(localStorage.getItem('ironzone_cart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartBadge.textContent = totalItems > 0 ? totalItems : '0';
+        cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
 }
 
 /**
@@ -70,9 +83,8 @@ function initProducts() {
         button.addEventListener('click', handleFavoriteClick);
     });
 
-    // Product card click - navigate to product detail page
+
     productCards.forEach(card => {
-        // Don't navigate if clicking on favorite button
         card.addEventListener('click', function(e) {
             if (!e.target.closest('.product-card__favorite')) {
                 handleProductCardClick(card);
@@ -81,9 +93,7 @@ function initProducts() {
     });
 }
 
-/**
- * Handle Favorite Button Click
- */
+
 function handleFavoriteClick(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -307,3 +317,6 @@ if (document.readyState === 'loading') {
 } else {
     initApp();
 }
+
+// Expose functions globally
+window.updateCartBadge = updateCartBadge;

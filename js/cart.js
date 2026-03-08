@@ -12,13 +12,19 @@ function loadCartItems() {
 
     if (cart.length === 0) {
         cartContainer.innerHTML = '';
-        cartContainer.appendChild(emptyCart);
+        if (emptyCart) {
+            cartContainer.appendChild(emptyCart);
+        } else {
+            cartContainer.innerHTML = '<div class="empty-cart"><h2>Your cart is empty</h2><p>Add items to get started</p></div>';
+        }
         updateCartSummary(cart);
         return;
     }
 
     // Remove empty cart message
-    emptyCart.style.display = 'none';
+    if (emptyCart) {
+        emptyCart.style.display = 'none';
+    }
 
     // Clear container
     cartContainer.innerHTML = '';
@@ -40,27 +46,40 @@ function createCartItemElement(item) {
     const cartItem = document.createElement('div');
     cartItem.className = 'cart-item';
     cartItem.dataset.productId = item.id;
+    
+    // Create unique identifier for this item variant (includes options)
+    const itemUniqueId = `${item.id}-${item.options?.size || 'default'}-${item.options?.color || 'default'}`;
+    cartItem.dataset.itemId = itemUniqueId;
 
     const itemTotal = item.price * item.quantity;
+    
+    // Get product image URL
+    const imageSrc = item.image && item.image.startsWith('http') ? item.image : (item.image ? `images/${item.image}` : '');
+    
+    // Display options if they exist
+    const optionsDisplay = item.options ? `<div class="cart-item__options" style="font-size: 12px; color: #666; margin-top: 4px;">Size: ${item.options.size || 'N/A'} | Color: ${item.options.color || 'N/A'}</div>` : '';
 
     cartItem.innerHTML = `
-        <div class="cart-item__image">[${item.type}]</div>
+        <div class="cart-item__image">
+            ${imageSrc ? `<img src="${imageSrc}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;">` : `<div style="display: flex; align-items: center; justify-content: center; height: 100%;">[${item.type}]</div>`}
+        </div>
         <div class="cart-item__content">
             <div class="cart-item__header">
                 <div>
                     <div class="cart-item__brand">${item.brand}</div>
                     <div class="cart-item__name">${item.name}</div>
+                    ${optionsDisplay}
                 </div>
-                <button class="cart-item__remove" data-product-id="${item.id}">REMOVE</button>
+                <button class="cart-item__remove" data-item-id="${itemUniqueId}">REMOVE</button>
             </div>
             <div class="cart-item__footer">
                 <div>
                     <span class="cart-item__price">₹${item.price.toLocaleString('en-IN')}</span>
                     <span class="cart-item__original-price">₹${item.originalPrice.toLocaleString('en-IN')}</span>
                 </div>
-                <div class="quantity-selector" data-product-id="${item.id}">
+                <div class="quantity-selector" data-item-id="${itemUniqueId}">
                     <button class="quantity-btn" data-action="decrease">−</button>
-                    <input type="number" class="quantity-input" value="${item.quantity}" data-product-id="${item.id}" min="1" max="10">
+                    <input type="number" class="quantity-input" value="${item.quantity}" data-item-id="${itemUniqueId}" min="1" max="10">
                     <button class="quantity-btn" data-action="increase">+</button>
                 </div>
                 <div class="item-total">₹${itemTotal.toLocaleString('en-IN')}</div>
@@ -71,7 +90,7 @@ function createCartItemElement(item) {
     // Add event listeners
     const removeBtn = cartItem.querySelector('.cart-item__remove');
     removeBtn.addEventListener('click', () => {
-        removeFromCart(item.id);
+        removeFromCart(item.id, item.options);
     });
 
     const decreaseBtn = cartItem.querySelector('[data-action="decrease"]');
@@ -81,14 +100,14 @@ function createCartItemElement(item) {
     decreaseBtn.addEventListener('click', () => {
         const newQty = parseInt(quantityInput.value) - 1;
         if (newQty > 0) {
-            updateQuantity(item.id, newQty);
+            updateQuantity(item.id, item.options, newQty);
         }
     });
 
     increaseBtn.addEventListener('click', () => {
         const newQty = parseInt(quantityInput.value) + 1;
         if (newQty <= 10) {
-            updateQuantity(item.id, newQty);
+            updateQuantity(item.id, item.options, newQty);
         }
     });
 
@@ -96,7 +115,7 @@ function createCartItemElement(item) {
         let newQty = parseInt(e.target.value) || 1;
         if (newQty < 1) newQty = 1;
         if (newQty > 10) newQty = 10;
-        updateQuantity(item.id, newQty);
+        updateQuantity(item.id, item.options, newQty);
     });
 
     return cartItem;
@@ -105,22 +124,48 @@ function createCartItemElement(item) {
 /**
  * Remove Item from Cart
  */
-function removeFromCart(productId) {
+function removeFromCart(productId, options = {}) {
     let cart = JSON.parse(localStorage.getItem('ironzone_cart')) || [];
-    cart = cart.filter(item => item.id !== productId);
+    
+    // Find and remove the specific item variant
+    cart = cart.filter(item => {
+        const itemId = `${item.id}-${item.options?.size || 'default'}-${item.options?.color || 'default'}`;
+        const targetId = `${productId}-${options.size || 'default'}-${options.color || 'default'}`;
+        return itemId !== targetId;
+    });
+    
     localStorage.setItem('ironzone_cart', JSON.stringify(cart));
+    
+    // Update cart badge
+    if (window.updateCartBadge) {
+        window.updateCartBadge();
+    }
+    
     loadCartItems();
 }
 
 /**
  * Update Item Quantity
  */
-function updateQuantity(productId, newQuantity) {
+function updateQuantity(productId, options = {}, newQuantity) {
     let cart = JSON.parse(localStorage.getItem('ironzone_cart')) || [];
-    const item = cart.find(p => p.id === productId);
+    
+    // Find the specific item variant
+    const item = cart.find(p => {
+        const itemId = `${p.id}-${p.options?.size || 'default'}-${p.options?.color || 'default'}`;
+        const targetId = `${productId}-${options.size || 'default'}-${options.color || 'default'}`;
+        return itemId === targetId;
+    });
+    
     if (item) {
         item.quantity = newQuantity;
         localStorage.setItem('ironzone_cart', JSON.stringify(cart));
+        
+        // Update cart badge
+        if (window.updateCartBadge) {
+            window.updateCartBadge();
+        }
+        
         loadCartItems();
     }
 }

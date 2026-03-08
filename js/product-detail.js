@@ -9,7 +9,8 @@ let quantity = 1;
  * Initialize Product Detail Page
  */
 function initProductDetailPage() {
-    // Get product ID from URL
+    console.log('Initializing product detail page...');
+    
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
@@ -19,15 +20,16 @@ function initProductDetailPage() {
         return;
     }
 
-    // Load product data
     currentProduct = getProductById(productId);
     if (!currentProduct) {
-        console.error('Product not found');
+        console.error('Product not found:', productId);
         window.location.href = 'index.html';
         return;
     }
 
-    // Populate product details
+    console.log('Product loaded:', currentProduct);
+
+    // Populate product details on page
     populateProductDetails();
 
     // Load related products
@@ -57,10 +59,25 @@ function populateProductDetails() {
     document.getElementById('description').textContent = currentProduct.description;
     document.getElementById('rating').textContent = currentProduct.rating;
     document.getElementById('reviewCount').textContent = currentProduct.reviews;
-    document.getElementById('type').textContent = currentProduct.type;
-    document.getElementById('category').textContent = PRODUCTS_DATA[currentProduct.category].name;
-    document.getElementById('discountPercent').textContent = currentProduct.discount;
     document.getElementById('discountBadge').textContent = `-${currentProduct.discount}%`;
+
+    // Set product image - get from URL parameter first, fallback to product data
+    const mainImage = document.getElementById('mainImage');
+    if (mainImage) {
+        // Get image from URL parameter if available
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageFromUrl = urlParams.get('image');
+        
+        let imageSrc;
+        if (imageFromUrl) {
+            imageSrc = decodeURIComponent(imageFromUrl);
+        } else {
+            imageSrc = currentProduct.image.startsWith('http') ? currentProduct.image : `images/${currentProduct.image}`;
+        }
+        
+        mainImage.src = imageSrc;
+        mainImage.alt = currentProduct.name;
+    }
 
     // Update star rating
     const starCount = Math.floor(currentProduct.rating);
@@ -121,9 +138,9 @@ function createRelatedProductCard(product) {
         </div>
     `;
 
-    card.addEventListener('click', () => {
-        window.location.href = `product-detail.html?id=${product.id}`;
-    });
+card.addEventListener('click', () => {
+    window.location.href = `product-detail.html?id=${product.id}&image=${encodeURIComponent(product.image)}`;
+});
 
     return card;
 }
@@ -201,7 +218,12 @@ function initEventListeners() {
     // Add to cart button
     const addCartBtn = document.getElementById('addCartBtn');
     if (addCartBtn) {
-        addCartBtn.addEventListener('click', () => {
+        addCartBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (!currentProduct) {
+                console.error('Product not loaded yet');
+                return;
+            }
             const selectedSize = document.querySelector('[data-size].active')?.dataset.size || 'Standard';
             const selectedColor = document.querySelector('[data-color].active')?.dataset.color || 'Red';
             addToCart(currentProduct, quantity, { size: selectedSize, color: selectedColor });
@@ -248,6 +270,11 @@ function addToCart(product, qty, options = {}) {
 
     // Save cart to localStorage
     localStorage.setItem('ironzone_cart', JSON.stringify(cart));
+
+    // Update cart badge
+    if (window.updateCartBadge) {
+        window.updateCartBadge();
+    }
 
     // Show confirmation toast
     showCartNotification(`${product.name} (Qty: ${qty}) added to bag!`);

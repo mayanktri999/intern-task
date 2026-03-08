@@ -59,7 +59,7 @@
     position: absolute;
     top: var(--spacing-sm);
     left: var(--spacing-sm);
-    background-color: var(--color-primary);
+    background-color: #F4A261;
     color: white;
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--radius-sm);
@@ -137,7 +137,7 @@
 .product-card__price {
     font-size: var(--font-size-lg);
     font-weight: 700;
-    color: var(--color-text);
+    color: #ffffff;
     margin: 0;
 }
 
